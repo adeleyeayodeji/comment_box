@@ -1,3 +1,7 @@
+## 0.0.12
+
+- Added More Update
+
 ## 0.0.11
 
 - Removed Unused code
