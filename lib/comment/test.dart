@@ -1,12 +1,3 @@
-# comment_box
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a is all for fun
-
-```Dart
 import 'package:comment_box/comment/comment.dart';
 import 'package:flutter/material.dart';
 
@@ -117,5 +108,3 @@ class _TestMeState extends State<TestMe> {
     );
   }
 }
-
-```

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'comment/main.dart';
+import 'comment/comment.dart';
+import 'comment/test.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: CommentBox(),
+      home: TestMe(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
