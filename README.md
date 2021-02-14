@@ -1,6 +1,6 @@
-# flutter_slidable
+# comment_box
 
-Simple comment box.
+A simple Flutter comment box for posts and products.
 
 [![Pub](https://img.shields.io/pub/v/flutter_slidable.svg)](https://pub.dev/packages/comment_box)
 
@@ -20,7 +20,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  comment_box: ^0.0.13
+  comment_box: ^0.0.14
 ```
 
 In your library add the following import:
