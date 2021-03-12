@@ -37,7 +37,7 @@ class CommentBox extends StatelessWidget {
         Divider(
           height: 1,
         ),
-        header ?? SizedBox.shrink()
+        header ?? SizedBox.shrink(),
         ListTile(
           tileColor: backgroundColor,
           leading: Container(
