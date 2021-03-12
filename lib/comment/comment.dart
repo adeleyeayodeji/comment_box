@@ -14,8 +14,10 @@ class CommentBox extends StatelessWidget {
   Color backgroundColor;
   Color textColor;
   bool withBorder;
+  Widget header;
   CommentBox(
       {this.child,
+      this.header,
       this.sendButtonMethod,
       this.formKey,
       this.commentController,
@@ -35,6 +37,7 @@ class CommentBox extends StatelessWidget {
         Divider(
           height: 1,
         ),
+        header ?? SizedBox.shrink()
         ListTile(
           tileColor: backgroundColor,
           leading: Container(
