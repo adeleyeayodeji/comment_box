@@ -13,6 +13,7 @@ class CommentBox extends StatelessWidget {
   Widget sendWidget;
   Color backgroundColor;
   Color textColor;
+  bool withBorder;
   CommentBox(
       {this.child,
       this.sendButtonMethod,
@@ -22,6 +23,7 @@ class CommentBox extends StatelessWidget {
       this.userImage,
       this.labelText,
       this.errorText,
+      this.withBorder = true,
       this.backgroundColor,
       this.textColor});
 
@@ -38,11 +40,8 @@ class CommentBox extends StatelessWidget {
           leading: Container(
             height: 40.0,
             width: 40.0,
-            decoration: new BoxDecoration(
-                color: Colors.blue,
-                borderRadius: new BorderRadius.all(Radius.circular(50))),
-            child: CircleAvatar(
-                radius: 50, backgroundImage: NetworkImage(userImage)),
+            decoration: new BoxDecoration(color: Colors.blue, borderRadius: new BorderRadius.all(Radius.circular(50))),
+            child: CircleAvatar(radius: 50, backgroundImage: NetworkImage(userImage)),
           ),
           title: Form(
             key: formKey,
@@ -53,15 +52,21 @@ class CommentBox extends StatelessWidget {
               style: TextStyle(color: textColor),
               controller: commentController,
               decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor),
-                ),
-                border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor),
-                ),
+                enabledBorder: !withBorder
+                    ? InputBorder.none
+                    : UnderlineInputBorder(
+                        borderSide: BorderSide(color: textColor),
+                      ),
+                focusedBorder: !withBorder
+                    ? InputBorder.none
+                    : UnderlineInputBorder(
+                        borderSide: BorderSide(color: textColor),
+                      ),
+                border: !withBorder
+                    ? InputBorder.none
+                    : UnderlineInputBorder(
+                        borderSide: BorderSide(color: textColor),
+                      ),
                 labelText: labelText,
                 focusColor: textColor,
                 fillColor: textColor,
