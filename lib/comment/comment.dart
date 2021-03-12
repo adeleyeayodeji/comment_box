@@ -75,10 +75,8 @@ class CommentBox extends StatelessWidget {
               validator: (value) => value.isEmpty ? errorText : null,
             ),
           ),
-          trailing: OutlineButton(
-            highlightedBorderColor: Colors.orange,
-            onPressed: sendButtonMethod,
-            borderSide: BorderSide.none,
+          trailing: GestureDetector(
+            onTap: sendButtonMethod,
             child: sendWidget,
           ),
         ),
