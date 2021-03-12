@@ -15,6 +15,7 @@ class CommentBox extends StatelessWidget {
   Color textColor;
   bool withBorder;
   Widget header;
+  FocusNode focusNode;
   CommentBox(
       {this.child,
       this.header,
@@ -24,6 +25,7 @@ class CommentBox extends StatelessWidget {
       this.sendWidget,
       this.userImage,
       this.labelText,
+      this.focusNode,
       this.errorText,
       this.withBorder = true,
       this.backgroundColor,
@@ -51,6 +53,7 @@ class CommentBox extends StatelessWidget {
             child: TextFormField(
               maxLines: 4,
               minLines: 1,
+              focusNode: focusNode,
               cursorColor: textColor,
               style: TextStyle(color: textColor),
               controller: commentController,
