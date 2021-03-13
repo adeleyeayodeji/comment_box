@@ -13,15 +13,21 @@ class CommentBox extends StatelessWidget {
   Widget sendWidget;
   Color backgroundColor;
   Color textColor;
+  bool withBorder;
+  Widget header;
+  FocusNode focusNode;
   CommentBox(
       {this.child,
+      this.header,
       this.sendButtonMethod,
       this.formKey,
       this.commentController,
       this.sendWidget,
       this.userImage,
       this.labelText,
+      this.focusNode,
       this.errorText,
+      this.withBorder = true,
       this.backgroundColor,
       this.textColor});
 
@@ -33,35 +39,40 @@ class CommentBox extends StatelessWidget {
         Divider(
           height: 1,
         ),
+        header ?? SizedBox.shrink(),
         ListTile(
           tileColor: backgroundColor,
           leading: Container(
             height: 40.0,
             width: 40.0,
-            decoration: new BoxDecoration(
-                color: Colors.blue,
-                borderRadius: new BorderRadius.all(Radius.circular(50))),
-            child: CircleAvatar(
-                radius: 50, backgroundImage: NetworkImage(userImage)),
+            decoration: new BoxDecoration(color: Colors.blue, borderRadius: new BorderRadius.all(Radius.circular(50))),
+            child: CircleAvatar(radius: 50, backgroundImage: NetworkImage(userImage)),
           ),
           title: Form(
             key: formKey,
             child: TextFormField(
               maxLines: 4,
               minLines: 1,
+              focusNode: focusNode,
               cursorColor: textColor,
               style: TextStyle(color: textColor),
               controller: commentController,
               decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor),
-                ),
-                border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor),
-                ),
+                enabledBorder: !withBorder
+                    ? InputBorder.none
+                    : UnderlineInputBorder(
+                        borderSide: BorderSide(color: textColor),
+                      ),
+                focusedBorder: !withBorder
+                    ? InputBorder.none
+                    : UnderlineInputBorder(
+                        borderSide: BorderSide(color: textColor),
+                      ),
+                border: !withBorder
+                    ? InputBorder.none
+                    : UnderlineInputBorder(
+                        borderSide: BorderSide(color: textColor),
+                      ),
                 labelText: labelText,
                 focusColor: textColor,
                 fillColor: textColor,
@@ -70,10 +81,8 @@ class CommentBox extends StatelessWidget {
               validator: (value) => value.isEmpty ? errorText : null,
             ),
           ),
-          trailing: OutlineButton(
-            highlightedBorderColor: Colors.orange,
-            onPressed: sendButtonMethod,
-            borderSide: BorderSide.none,
+          trailing: GestureDetector(
+            onTap: sendButtonMethod,
             child: sendWidget,
           ),
         ),
