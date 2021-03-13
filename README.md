@@ -4,6 +4,8 @@ A simple Flutter comment box for posts and products.
 
 [![Pub](https://img.shields.io/pub/v/flutter_slidable.svg)](https://pub.dev/packages/comment_box)
 
+![Overview](https://github.com/adeleyeayodeji/comment_box/blob/main/Screenshot1.png)
+
 ![Overview](https://github.com/adeleyeayodeji/comment_box/blob/main/ezgif.com-gif-maker.gif)
 
 ## Features
