@@ -1,7 +1,7 @@
 name: comment_box
 description: A simple Flutter comment box for posts and products.
 homepage: https://github.com/adeleyeayodeji/comment_box
-version: 0.0.14
+version: 0.0.15
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

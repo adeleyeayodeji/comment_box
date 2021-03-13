@@ -1,3 +1,9 @@
+## 0.0.15
+
+- Added withBorder 
+- Added focusNode 
+- Update Readme
+
 ## 0.0.14
 
 - Update Readme

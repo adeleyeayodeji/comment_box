@@ -80,6 +80,7 @@ class _TestMeState extends State<TestMe> {
           child: commentChild(filedata),
           labelText: 'Write a comment...',
           errorText: 'Comment cannot be blank',
+          withBorder: false,
           sendButtonMethod: () {
             if (formKey.currentState.validate()) {
               print(commentController.text);
