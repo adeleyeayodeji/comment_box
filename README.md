@@ -4,7 +4,7 @@ A simple Flutter comment box for posts and products.
 
 ## Youtube Preview
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/IphfMcZc3jc/0.jpg)](https://www.youtube.com/watch?v=IphfMcZc3jc)
 
 [![Pub](https://img.shields.io/pub/v/flutter_slidable.svg)](https://pub.dev/packages/comment_box)
 
