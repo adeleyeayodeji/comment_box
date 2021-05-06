@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CommentBox extends StatelessWidget {
-  Widget child;
+  Widget? child;
   dynamic formKey;
   dynamic sendButtonMethod;
   dynamic commentController;
-  String userImage;
-  String labelText;
-  String errorText;
-  Widget sendWidget;
-  Color backgroundColor;
-  Color textColor;
+  String? userImage;
+  String? labelText;
+  String? errorText;
+  Widget? sendWidget;
+  Color? backgroundColor;
+  Color? textColor;
   CommentBox(
       {this.child,
       this.sendButtonMethod,
@@ -29,7 +29,7 @@ class CommentBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(child: child),
+        Expanded(child: child!),
         Divider(
           height: 1,
         ),
@@ -42,7 +42,7 @@ class CommentBox extends StatelessWidget {
                 color: Colors.blue,
                 borderRadius: new BorderRadius.all(Radius.circular(50))),
             child: CircleAvatar(
-                radius: 50, backgroundImage: NetworkImage(userImage)),
+                radius: 50, backgroundImage: NetworkImage(userImage!)),
           ),
           title: Form(
             key: formKey,
@@ -54,20 +54,20 @@ class CommentBox extends StatelessWidget {
               controller: commentController,
               decoration: InputDecoration(
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor),
+                  borderSide: BorderSide(color: textColor!),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor),
+                  borderSide: BorderSide(color: textColor!),
                 ),
                 border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor),
+                  borderSide: BorderSide(color: textColor!),
                 ),
                 labelText: labelText,
                 focusColor: textColor,
                 fillColor: textColor,
                 labelStyle: TextStyle(color: textColor),
               ),
-              validator: (value) => value.isEmpty ? errorText : null,
+              validator: (value) => value!.isEmpty ? errorText : null,
             ),
           ),
           trailing: OutlineButton(
