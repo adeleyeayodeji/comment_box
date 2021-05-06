@@ -61,15 +61,21 @@ class CommentBox extends StatelessWidget {
               style: TextStyle(color: textColor),
               controller: commentController,
               decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor!),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor!),
-                ),
-                border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: textColor!),
-                ),
+                enabledBorder: !withBorder
+                    ? InputBorder.none
+                    : UnderlineInputBorder(
+                        borderSide: BorderSide(color: textColor!),
+                      ),
+                focusedBorder: !withBorder
+                    ? InputBorder.none
+                    : UnderlineInputBorder(
+                        borderSide: BorderSide(color: textColor!),
+                      ),
+                border: !withBorder
+                    ? InputBorder.none
+                    : UnderlineInputBorder(
+                        borderSide: BorderSide(color: textColor!),
+                      ),
                 labelText: labelText,
                 focusColor: textColor,
                 fillColor: textColor,
