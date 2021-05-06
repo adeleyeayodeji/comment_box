@@ -11,18 +11,20 @@ class _TestMeState extends State<TestMe> {
   final TextEditingController commentController = TextEditingController();
   List filedata = [
     {
-      'name': 'Adeleye Ayodeji',
-      'pic': 'https://picsum.photos/300/30',
+      'name': 'Chuks Okwuenu',
+      'pic': 'https://chuksokwuenu.com/img/pic.jpg',
       'message': 'I love to code'
     },
     {
       'name': 'Biggi Man',
-      'pic': 'https://picsum.photos/300/30',
+      'pic':
+          'https://event.chuksokwuenu.com/images/IMG_20200522_122853_521~2.jpg',
       'message': 'Very cool'
     },
     {
-      'name': 'Biggi Man',
-      'pic': 'https://picsum.photos/300/30',
+      'name': 'Tunde Martins',
+      'pic':
+          'https://lh3.googleusercontent.com/gXjdVvgHcgJphBYJ_yxPyQF7gf2k4Ze4wYUj7lA9ObWYIUNBeD16H3RF6ylEGrjpbmBNVlcuSSkMa3NN=w768-h768-n-o-v1',
       'message': 'Very cool'
     },
     {
@@ -52,7 +54,7 @@ class _TestMeState extends State<TestMe> {
                       borderRadius: new BorderRadius.all(Radius.circular(50))),
                   child: CircleAvatar(
                       radius: 50,
-                      backgroundImage: NetworkImage(data[i]['pic'] + "$i")),
+                      backgroundImage: NetworkImage(data[i]['pic'])),
                 ),
               ),
               title: Text(
@@ -81,7 +83,7 @@ class _TestMeState extends State<TestMe> {
           labelText: 'Write a comment...',
           errorText: 'Comment cannot be blank',
           sendButtonMethod: () {
-            if (formKey.currentState.validate()) {
+            if (formKey.currentState!.validate()) {
               print(commentController.text);
               setState(() {
                 var value = {
