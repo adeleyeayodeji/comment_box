@@ -13,15 +13,21 @@ class CommentBox extends StatelessWidget {
   Widget? sendWidget;
   Color? backgroundColor;
   Color? textColor;
+  bool withBorder;
+  Widget? header;
+  FocusNode? focusNode;
   CommentBox(
       {this.child,
+      this.header,
       this.sendButtonMethod,
       this.formKey,
       this.commentController,
       this.sendWidget,
       this.userImage,
       this.labelText,
+      this.focusNode,
       this.errorText,
+      this.withBorder = true,
       this.backgroundColor,
       this.textColor});
 
@@ -33,6 +39,7 @@ class CommentBox extends StatelessWidget {
         Divider(
           height: 1,
         ),
+        header ?? SizedBox.shrink(),
         ListTile(
           tileColor: backgroundColor,
           leading: Container(
@@ -49,6 +56,7 @@ class CommentBox extends StatelessWidget {
             child: TextFormField(
               maxLines: 4,
               minLines: 1,
+              focusNode: focusNode,
               cursorColor: textColor,
               style: TextStyle(color: textColor),
               controller: commentController,
@@ -70,10 +78,8 @@ class CommentBox extends StatelessWidget {
               validator: (value) => value!.isEmpty ? errorText : null,
             ),
           ),
-          trailing: OutlineButton(
-            highlightedBorderColor: Colors.orange,
-            onPressed: sendButtonMethod,
-            borderSide: BorderSide.none,
+          trailing: GestureDetector(
+            onTap: sendButtonMethod,
             child: sendWidget,
           ),
         ),

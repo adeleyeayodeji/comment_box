@@ -4,6 +4,8 @@ A simple Flutter comment box for posts and products.
 
 [![Pub](https://img.shields.io/pub/v/flutter_slidable.svg)](https://pub.dev/packages/comment_box)
 
+![Overview](https://github.com/adeleyeayodeji/comment_box/blob/main/Screenshot1.png)
+
 ![Overview](https://github.com/adeleyeayodeji/comment_box/blob/main/ezgif.com-gif-maker.gif)
 
 ## Features
@@ -20,7 +22,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  comment_box: ^0.0.14
+  comment_box: ^0.0.15
 ```
 
 In your library add the following import:
@@ -41,6 +43,7 @@ CommentBox(
               "https://lh3.googleusercontent.com/a-/AOh14GjRHcaendrf6gU5fPIVd8GIl1OgblrMMvGUoCBj4g=s400",
           child: commentChild(filedata),
           labelText: 'Write a comment...',
+          withBorder: false,
           errorText: 'Comment cannot be blank',
           sendButtonMethod: () {
             if (formKey.currentState.validate()) {
@@ -152,6 +155,7 @@ class _TestMeState extends State<TestMe> {
               "https://lh3.googleusercontent.com/a-/AOh14GjRHcaendrf6gU5fPIVd8GIl1OgblrMMvGUoCBj4g=s400",
           child: commentChild(filedata),
           labelText: 'Write a comment...',
+          withBorder: false,
           errorText: 'Comment cannot be blank',
           sendButtonMethod: () {
             if (formKey.currentState.validate()) {
