@@ -12,25 +12,27 @@ class _TestMeState extends State<TestMe> {
   List filedata = [
     {
       'name': 'Chuks Okwuenu',
-      'pic': 'https://chuksokwuenu.com/img/pic.jpg',
-      'message': 'I love to code'
+      'pic': 'https://picsum.photos/300/30',
+      'message': 'I love to code',
+      'date': '2021-01-01 12:00:00'
     },
     {
       'name': 'Biggi Man',
-      'pic':
-          'https://event.chuksokwuenu.com/images/IMG_20200522_122853_521~2.jpg',
-      'message': 'Very cool'
+      'pic': 'https://www.adeleyeayodeji.com/img/IMG_20200522_121756_834_2.jpg',
+      'message': 'Very cool',
+      'date': '2021-01-01 12:00:00'
     },
     {
       'name': 'Tunde Martins',
-      'pic':
-          'https://lh3.googleusercontent.com/gXjdVvgHcgJphBYJ_yxPyQF7gf2k4Ze4wYUj7lA9ObWYIUNBeD16H3RF6ylEGrjpbmBNVlcuSSkMa3NN=w768-h768-n-o-v1',
-      'message': 'Very cool'
+      'pic': 'assets/img/userpic.jpg',
+      'message': 'Very cool',
+      'date': '2021-01-01 12:00:00'
     },
     {
       'name': 'Biggi Man',
       'pic': 'https://picsum.photos/300/30',
-      'message': 'Very cool'
+      'message': 'Very cool',
+      'date': '2021-01-01 12:00:00'
     },
   ];
 
@@ -54,7 +56,8 @@ class _TestMeState extends State<TestMe> {
                       borderRadius: new BorderRadius.all(Radius.circular(50))),
                   child: CircleAvatar(
                       radius: 50,
-                      backgroundImage: NetworkImage(data[i]['pic'])),
+                      backgroundImage: CommentBox.commentImageParser(
+                          imageURLorPath: data[i]['pic'])),
                 ),
               ),
               title: Text(
@@ -62,6 +65,7 @@ class _TestMeState extends State<TestMe> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Text(data[i]['message']),
+              trailing: Text(data[i]['date'], style: TextStyle(fontSize: 10)),
             ),
           )
       ],
@@ -77,8 +81,8 @@ class _TestMeState extends State<TestMe> {
       ),
       body: Container(
         child: CommentBox(
-          userImage:
-              "https://lh3.googleusercontent.com/a-/AOh14GjRHcaendrf6gU5fPIVd8GIl1OgblrMMvGUoCBj4g=s400",
+          userImage: CommentBox.commentImageParser(
+              imageURLorPath: "assets/img/userpic.jpg"),
           child: commentChild(filedata),
           labelText: 'Write a comment...',
           errorText: 'Comment cannot be blank',
@@ -91,7 +95,8 @@ class _TestMeState extends State<TestMe> {
                   'name': 'New User',
                   'pic':
                       'https://lh3.googleusercontent.com/a-/AOh14GjRHcaendrf6gU5fPIVd8GIl1OgblrMMvGUoCBj4g=s400',
-                  'message': commentController.text
+                  'message': commentController.text,
+                  'date': '2021-01-01 12:00:00'
                 };
                 filedata.insert(0, value);
               });

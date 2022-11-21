@@ -1,3 +1,15 @@
+## 0.0.18
+
+- Added support for local image and url image on user profile image
+
+## 0.0.17
+
+- Fix Bugs
+
+## 0.0.16
+
+- Upgraded to Null Safety
+
 ## 0.0.15
 
 - Added withBorder

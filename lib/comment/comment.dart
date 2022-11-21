@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -7,7 +6,7 @@ class CommentBox extends StatelessWidget {
   dynamic formKey;
   dynamic sendButtonMethod;
   dynamic commentController;
-  String? userImage;
+  ImageProvider? userImage;
   String? labelText;
   String? errorText;
   Widget? sendWidget;
@@ -48,8 +47,7 @@ class CommentBox extends StatelessWidget {
             decoration: new BoxDecoration(
                 color: Colors.blue,
                 borderRadius: new BorderRadius.all(Radius.circular(50))),
-            child: CircleAvatar(
-                radius: 50, backgroundImage: NetworkImage(userImage!)),
+            child: CircleAvatar(radius: 50, backgroundImage: userImage),
           ),
           title: Form(
             key: formKey,
@@ -91,5 +89,25 @@ class CommentBox extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  /// This method is used to parse the image from the URL or the path.
+  /// `CommentBox.commentImageParser(imageURLorPath: 'url_or_path_to_image')`
+  static ImageProvider commentImageParser({imageURLorPath}) {
+    try {
+      //check if imageURLorPath
+      if (imageURLorPath is String) {
+        if (imageURLorPath.startsWith('http')) {
+          return NetworkImage(imageURLorPath);
+        } else {
+          return AssetImage(imageURLorPath);
+        }
+      } else {
+        return imageURLorPath;
+      }
+    } catch (e) {
+      //throw error
+      throw Exception('Error parsing image: $e');
+    }
   }
 }

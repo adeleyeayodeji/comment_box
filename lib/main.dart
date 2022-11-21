@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'comment/comment.dart';
 import 'comment/test.dart';
 
 void main() {

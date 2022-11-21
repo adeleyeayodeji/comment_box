@@ -15,7 +15,7 @@ A simple Flutter comment box for posts and products.
 ## Features
 
 - Smooth Scrolling Supported.
-- User image Supported.
+- User image Supported (Local and Url).
 - Text Wrapping Supported.
 - Many more . . .
 
@@ -26,7 +26,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  comment_box: ^0.0.15
+  comment_box: ^0.0.18
 ```
 
 In your library add the following import:
@@ -43,21 +43,22 @@ You can create a `CommentBox`:
 
 ```dart
 CommentBox(
-          userImage:
-              "https://lh3.googleusercontent.com/a-/AOh14GjRHcaendrf6gU5fPIVd8GIl1OgblrMMvGUoCBj4g=s400",
+          userImage: CommentBox.commentImageParser(
+              imageURLorPath: "assets/img/userpic.jpg"),
           child: commentChild(filedata),
           labelText: 'Write a comment...',
-          withBorder: false,
           errorText: 'Comment cannot be blank',
+          withBorder: false,
           sendButtonMethod: () {
-            if (formKey.currentState.validate()) {
+            if (formKey.currentState!.validate()) {
               print(commentController.text);
               setState(() {
                 var value = {
                   'name': 'New User',
                   'pic':
                       'https://lh3.googleusercontent.com/a-/AOh14GjRHcaendrf6gU5fPIVd8GIl1OgblrMMvGUoCBj4g=s400',
-                  'message': commentController.text
+                  'message': commentController.text,
+                  'date': '2021-01-01 12:00:00'
                 };
                 filedata.insert(0, value);
               });
@@ -69,7 +70,7 @@ CommentBox(
           },
           formKey: formKey,
           commentController: commentController,
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.pink,
           textColor: Colors.white,
           sendWidget: Icon(Icons.send_sharp, size: 30, color: Colors.white),
         );
@@ -91,24 +92,28 @@ class _TestMeState extends State<TestMe> {
   final TextEditingController commentController = TextEditingController();
   List filedata = [
     {
-      'name': 'Adeleye Ayodeji',
+      'name': 'Chuks Okwuenu',
       'pic': 'https://picsum.photos/300/30',
-      'message': 'I love to code'
+      'message': 'I love to code',
+      'date': '2021-01-01 12:00:00'
+    },
+    {
+      'name': 'Biggi Man',
+      'pic': 'https://www.adeleyeayodeji.com/img/IMG_20200522_121756_834_2.jpg',
+      'message': 'Very cool',
+      'date': '2021-01-01 12:00:00'
+    },
+    {
+      'name': 'Tunde Martins',
+      'pic': 'assets/img/userpic.jpg',
+      'message': 'Very cool',
+      'date': '2021-01-01 12:00:00'
     },
     {
       'name': 'Biggi Man',
       'pic': 'https://picsum.photos/300/30',
-      'message': 'Very cool'
-    },
-    {
-      'name': 'Biggi Man',
-      'pic': 'https://picsum.photos/300/30',
-      'message': 'Very cool'
-    },
-    {
-      'name': 'Biggi Man',
-      'pic': 'https://picsum.photos/300/30',
-      'message': 'Very cool'
+      'message': 'Very cool',
+      'date': '2021-01-01 12:00:00'
     },
   ];
 
@@ -132,7 +137,8 @@ class _TestMeState extends State<TestMe> {
                       borderRadius: new BorderRadius.all(Radius.circular(50))),
                   child: CircleAvatar(
                       radius: 50,
-                      backgroundImage: NetworkImage(data[i]['pic'] + "$i")),
+                      backgroundImage: CommentBox.commentImageParser(
+                          imageURLorPath: data[i]['pic'])),
                 ),
               ),
               title: Text(
@@ -140,6 +146,7 @@ class _TestMeState extends State<TestMe> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Text(data[i]['message']),
+              trailing: Text(data[i]['date'], style: TextStyle(fontSize: 10)),
             ),
           )
       ],
@@ -155,21 +162,22 @@ class _TestMeState extends State<TestMe> {
       ),
       body: Container(
         child: CommentBox(
-          userImage:
-              "https://lh3.googleusercontent.com/a-/AOh14GjRHcaendrf6gU5fPIVd8GIl1OgblrMMvGUoCBj4g=s400",
+          userImage: CommentBox.commentImageParser(
+              imageURLorPath: "assets/img/userpic.jpg"),
           child: commentChild(filedata),
           labelText: 'Write a comment...',
-          withBorder: false,
           errorText: 'Comment cannot be blank',
+          withBorder: false,
           sendButtonMethod: () {
-            if (formKey.currentState.validate()) {
+            if (formKey.currentState!.validate()) {
               print(commentController.text);
               setState(() {
                 var value = {
                   'name': 'New User',
                   'pic':
                       'https://lh3.googleusercontent.com/a-/AOh14GjRHcaendrf6gU5fPIVd8GIl1OgblrMMvGUoCBj4g=s400',
-                  'message': commentController.text
+                  'message': commentController.text,
+                  'date': '2021-01-01 12:00:00'
                 };
                 filedata.insert(0, value);
               });
@@ -181,7 +189,7 @@ class _TestMeState extends State<TestMe> {
           },
           formKey: formKey,
           commentController: commentController,
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.pink,
           textColor: Colors.white,
           sendWidget: Icon(Icons.send_sharp, size: 30, color: Colors.white),
         ),
@@ -189,5 +197,6 @@ class _TestMeState extends State<TestMe> {
     );
   }
 }
+
 
 ```
